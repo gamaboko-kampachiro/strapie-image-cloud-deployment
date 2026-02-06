@@ -39,7 +39,7 @@ resource "aws_security_group" "ec2_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["152.57.38.197/32"]
+    cidr_blocks = ["<USE-YOUR-LAPTOP-IP-PREVENT-SSH-ACCESS-BY-OTHERS>/32"]
   }
 
   egress {
