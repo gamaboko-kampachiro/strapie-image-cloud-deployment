@@ -13,8 +13,56 @@ This solution implements a secure, multi-tier architecture:
 - Application Load Balancer in public subnet for external access to the Strapi application
 - Automated installation of Docker and Strapi via user_data scripts
 
+Internet
+|
+Application Load Balancer (Public Subnet)
+|
+Target Group
+|
+Private EC2 (Dockerized Strapi)
+|
+NAT Gateway
+|
+Internet Gateway
+
 ## Loom Vedio Link
-https://www.loom.com/share/79105ce70131452cb5f0609bfafcc441
+https://www.loom.com/share/7d9e03be72934d96a959818002340145
+
+
+---
+
+## 🛠️ Technologies Used
+
+- **AWS**
+  - VPC
+  - EC2
+  - Application Load Balancer
+  - NAT Gateway
+  - Internet Gateway
+  - Security Groups
+- **Terraform** (Infrastructure as Code)
+- **Docker**
+- **Strapi (Headless CMS)**
+- **Amazon Linux 2**
+
+---
+
+## 📁 Project Structure
+
+terraform-strapi/
+├── alb.tf # Application Load Balancer resources
+├── ec2.tf # EC2 instance and AMI
+├── outputs.tf # Terraform outputs
+├── provider.tf # AWS provider
+├── security.tf # Security Groups
+├── terraform.tfvars # Environment-specific values
+├── user_data.sh # Docker + Strapi bootstrap script
+├── variables.tf # Input variables
+├── vpc.tf # VPC, subnets, routes, NAT
+├── .gitignore
+└── README.md
+
+---
 
 ## Features
 
@@ -175,5 +223,6 @@ To destroy all infrastructure and avoid ongoing costs:
 ## Conclusion
 
 This Terraform implementation provides a secure, scalable, and production-ready environment for hosting Strapi applications. The architecture follows AWS best practices for security and reliability while maintaining simplicity for deployment and management.
+
 
 The solution demonstrates how to properly isolate application servers in private subnets while still allowing them to access the internet for updates and external APIs through a NAT Gateway. The Application Load Balancer provides a secure entry point for users to access the Strapi application.
